@@ -1,0 +1,22 @@
+<h1> Button invoking Javascript</h1>
+<h2> How to scaffold a simple button to call a javascript function</h2>
+<p>Output: <span id="output"></span></p>
+<input type="button" id="eval_button" value="Evaluate" onClick="changeIt()">
+<input type="button" id="reset_button" value="Reset" onClick="reset()">
+
+<script type="text/javascript">
+	function changeIt(){
+		var output_elem = document.getElementById("output");
+		if(!output_elem){
+			output_elem.innerHTML = "CHANGED!";
+		}
+		else{
+			console.log("Couldn't find element");
+		}
+	}
+	
+	function reset(){
+		document.getElementById("output").innerHTML = "";
+	}
+	
+</script>

@@ -1,0 +1,90 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link rel=stylesheet type="text/css" href="basicstyle.css" />
+	</head>
+	<body>
+		<h1> Javascript Primitive Types</h1>
+		<h2> Learning the 6 types built into the Javascript Language</h2>
+		<p> There are 6 built in types in Javascript</p>
+		<ul>
+			<li>Boolean</li>
+			<li 
+					title="The value null is a literal (not a property of the global object like undefined can be). In APIs, null is often retrieved in place where an object can be expected but no object is relevant. When checking for null or undefined beware of the differences between equality (==) and identity (===) operators (type-conversion is performed with the former).">
+				Null</li>
+			<li 
+					title="The strict equality operator rather than the standard equality operator must be used because x == undefined also checks whether x is null, while strict equality doesn't. null is not equivalent to undefined.">
+				Undefined</li>
+			<li>Number</li>
+			<li>String</li>
+			<li>Symbol (new in ECMAScript 6)</li>
+		</ul>
+		<p>There is also the type Object, which is a more complicated type.</p>
+		<h3>Boolean</h3>
+		<p>Boolean values can either be <em>true</em> or <em>false</em>.</p>
+		<p>Let's look at some examples</p>
+		<table style="text-align:left">
+			<tbody>
+				<tr>
+					<th>Snippet</th>
+					<th>Evaluates to</th>
+				</tr>
+				<tr>
+					<td>1 == 1</td>
+					<td><input type="button" id="show1" value="Show" onClick="show(this.id)"/><script>document.write(1==1);</script></td>
+				</tr>
+				<tr>
+					<td>"Hello" == "Hello"</td>
+					<td><script>document.write("Hello" == "Hello");</script></td>
+				</tr>
+				<tr>
+					<td>7 == "7"</td>
+					<td><script>document.write(7 == "7")</script></td>
+				</tr>
+				<tr>
+					<td>null == null</td>
+					<td><script>document.write(null == null)</script></td>
+				</tr>
+				<tr>
+					<td>null == "null"</td>
+					<td><script>document.write(null == "null")</script></td>
+				</tr>
+				<tr>
+					<td>true == "true"</td>
+					<td><script>document.write(true == "true")</script></td>
+				</tr>
+				<td>undefined == "undefined"</td>
+					<td><script>document.write(undefined == "undefined")</script></td>
+				</tr>
+					<td>null == undefined</td>
+					<td><script>document.write(null == undefined)</script></td>
+				</tr>
+				</tr>
+					<td>null === undefined</td>
+					<td><script>document.write(null === undefined)</script></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<script type="text/javascript">
+			function changeIt(){
+				var output_elem = document.getElementById("output");
+				if(output_elem){
+					output_elem.innerHTML = "CHANGED!";
+				}
+				else{
+					console.log("Couldn't find element");
+				}
+			}
+			function show(button_id){
+				console.log("Button " + button_id + " Pressed");
+				var button = document.getElementById(button_id);
+				button.style.display = "none";
+			  // try to get the parent then first child to get the expression (ie. 1==1)
+				// evaluate that expression
+				// replace the second td (where the button was) with the results of evaluating that
+				// POTENTIAL PROBLEMS -> Are they all going to be strings? ie. null vs "null"
+			}
+		</script>
+	</body>
+</html>
