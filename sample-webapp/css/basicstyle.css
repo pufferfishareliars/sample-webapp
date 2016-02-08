@@ -1,6 +1,7 @@
 body {
 	padding: 20px;
 	font-family: sans-serif;
+	margin-bottom: 120px;
 }
 
 th, td {
@@ -45,4 +46,14 @@ h4 {
 	padding-left: 10px;
 	border-left: 2px solid lightgrey;
 	margin-left: 10px;
+}
+
+.codetext {
+	font-family: monospace;
+	font-size: 1.2em;
+}
+
+.checkit{
+	text-decoration: underline;
+	text-decoration-color: blue;
 }

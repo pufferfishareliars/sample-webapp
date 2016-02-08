@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<link rel=stylesheet type="text/css" href="basicstyle.css" />
+		<link rel=stylesheet type="text/css" href="css/basicstyle.css" />
 	</head>
 	<body>
 		<h1> Javascript Primitive Types</h1>
@@ -35,37 +35,87 @@
 				</tr>
 				<tr>
 					<td>"Hello" == "Hello"</td>
-					<td><script>document.write("Hello" == "Hello");</script></td>
+					<td><input type="button" id="show2" value="Show" onClick="show(this.id)"/><script>document.write("Hello" == "Hello");</script></td>
 				</tr>
 				<tr>
 					<td>7 == "7"</td>
-					<td><script>document.write(7 == "7")</script></td>
+					<td><input type="button" id="show3" value="Show" onClick="show(this.id)"/><script>document.write(7 == "7")</script></td>
 				</tr>
 				<tr>
 					<td>null == null</td>
-					<td><script>document.write(null == null)</script></td>
+					<td><input type="button" id="show4" value="Show" onClick="show(this.id)"/><script>document.write(null == null)</script></td>
 				</tr>
 				<tr>
 					<td>null == "null"</td>
-					<td><script>document.write(null == "null")</script></td>
+					<td><input type="button" id="show5" value="Show" onClick="show(this.id)"/><script>document.write(null == "null")</script></td>
 				</tr>
 				<tr>
 					<td>true == "true"</td>
-					<td><script>document.write(true == "true")</script></td>
+					<td><input type="button" id="show6" value="Show" onClick="show(this.id)"/><script>document.write(true == "true")</script></td>
 				</tr>
 				<td>undefined == "undefined"</td>
-					<td><script>document.write(undefined == "undefined")</script></td>
+					<td><input type="button" id="show7" value="Show" onClick="show(this.id)"/><script>document.write(undefined == "undefined")</script></td>
 				</tr>
 					<td>null == undefined</td>
-					<td><script>document.write(null == undefined)</script></td>
+					<td><input type="button" id="show8" value="Show" onClick="show(this.id)"/><script>document.write(null == undefined)</script></td>
 				</tr>
 				</tr>
 					<td>null === undefined</td>
-					<td><script>document.write(null === undefined)</script></td>
+					<td><input type="button" id="show9" value="Show" onClick="show(this.id)"/><script>document.write(null === undefined)</script></td>
 				</tr>
 			</tbody>
 		</table>
 		
+		<h3>Strings	</h3>
+		<h4>Unicode</h4>
+		<p> <span class="checkit" title="CHECK THIS FOR REAL!"> Javascript strings conform to the unicode standard.</span> As such, any comparisons are made by their unicode value. For example...
+		</p>
+		<div class="codeblock">
+			<p>console.log("A" < "a"); // Would print true! A = U+0041 , a = U+0061</p>
+		</div>
+
+		<p>Other info about strings here:</p>
+
+		<h4>Automatic Type Conversions</h4>
+		<p><span title="Be more descriptive" class="checkit">Javascript tries to accept anything you give it</span></p>
+		<p> Let's look at some examples</p>
+		<table>
+				<tr>
+					<th>Expression</th>
+					<th>Evaluates to</th>
+				<tr>
+					<td>8 * null</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>"5" - 1</td>
+					<td>4</td>
+				</tr>
+				<tr>
+					<td>"5" + 1</td>
+					<td>51</td>
+				</tr>
+				<tr>
+					<td>"five" * 2</td>
+					<td>NaN</td>
+				</tr>
+				<tr>
+					<td>false == 0</td>
+					<td>true</td>
+				</tr>
+		</table>
+		<p>So how the hell is this calculated? Some of them seem a bit counterintuitive.  As it happens, the Javascript parser has a set of built in rules in a given order in which to apply the type conversion rules.  This process is called <em>type coercion</em>. Here are some interesting rules</p>
+		<ul>
+			<li>When something doesn't map to a number in an obvious way (such as <span class="codetext">"five"</span> or <span class="codetext">undefined</span>)</li>
+			<li>String concatination is tried before addition, so <span class="codetext">"5" + 1</span> becomes <span class="codetext">51</span></li>
+			<li>null and undefined may be coerced to each other, so to check if a value has been set you can use <span class="codetext"> == null</span> but that will not give you a difference between <span class="codetext">null</span> and <span class="codetext"> undefined</span>. You would need to use <span class="codetext">===</span> which uses type as part of the comparison without conversion.</li>
+		</ul>
+
+		<div class="tipblock">
+			<p class="tiptext">Use === defensively so that unexpected automatic type conversion doesn't lead to unexpected results.</p>
+			<p class="tipauthor"><a href="http://eloquentjavascript.net/01_values.html">Marijn Haverbeke</a></p>
+		</div>
+
 		<script type="text/javascript">
 			function changeIt(){
 				var output_elem = document.getElementById("output");
@@ -81,7 +131,13 @@
 				var button = document.getElementById(button_id);
 				button.style.display = "none";
 			  // try to get the parent then first child to get the expression (ie. 1==1)
+				var selectedRow = button.parentElement.parentElement;
+				console.log("Should be a <tr> element: " + selectedRow);
+				var expressionToEval = selectedRow.firstChild;
+				console.log("The first child of the " + selectedRow + " element is " + expressionToEval);
+
 				// evaluate that expression
+				console.log("Expression to evaluate: " + expressionToEval.innerHTML);
 				// replace the second td (where the button was) with the results of evaluating that
 				// POTENTIAL PROBLEMS -> Are they all going to be strings? ie. null vs "null"
 			}
